@@ -19,7 +19,7 @@ class DishController extends Controller
 
     public function show($id)
     {
-        $dish = Dish::find($id);
+        $dish = Dish::with('products')->find($id);
         if (!$dish) {
             return response()->json(['success' => false, 'message' => 'Блюдо не найдено'], 404);
         }
